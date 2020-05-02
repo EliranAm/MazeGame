@@ -1,0 +1,89 @@
+# - lines starting with '#' are a comment and should be ignore by loader
+# ROOM FORMAT:
+# RoomId
+# (r)egular/(t)reasure/(m)onster room
+# RoomColor - if <none> then do not print any description of room's color
+# DoorsColor - all doors in room have the same color. 
+# RoomName
+# RoomDescription
+# 
+# IF ROOM IS (T)REASURE ROOM THEN REGULAR ROOM FIELDS + :
+# MoneyInTreasure
+# ItemInTreasure
+# 
+# IF ROOM IS (M)ONSTER ROOM THEN REGULAR ROOM FIELDS + :
+# MonsterType
+# MoneyMonsterHas
+# ItemMonsterHas
+# 
+#
+# Items can be: (separated by a comma ',')
+#    key+X (where X is number of keys)
+#    life+X (where is X is amount of life the potion contains)
+#    sword+X (where X is sword strength)
+#    shield+X (where X is shield strength)
+#
+001|r|white|red|The entrance|You are at the entrance of a dark and damp dungeon
+003|r|none|none|T junction|Your first split in the road...
+004|r|none|none|Another tunnel|Getting deeper and deeper
+005|r|none|none|Another Junction|Getting deeper and deeper
+009|t|red|green|An empty room|Or is it?|500$|key+1
+007|m|red|green|An empty room|Or is it?|giant_turtle|0$|key+2,sword+2
+010|r|red|green|An empty room|Or is it?
+006|r|none|none|Another tunnel|Getting deeper and deeper
+002|t|white|blue|Amazing treasure room|You have found the biggest treasure room anyone has ever found!|5000$|sword+5,shield+5,key+3,life+70
+008|m|none|none|Another tunnel|Just another tunnel|gazonk|10000$|sword+5
+011|r|none|none|Another tunnel|Getting deeper and deeper
+012|m|none|none|Dark room|You hear weird noise|sea_monkey|1000$|key+2,sword+3
+013|m|none|none|Another tunnel|Getting deeper and deeper|beetle|0$|life+10
+015|r|none|none|Another tunnel|Getting deeper and deeper
+020|r|none|none|Another tunnel|Getting deeper and deeper
+016|m|none|none|Another Junction|Getting deeper and deeper|skeleton|50$|sword+3,life+30
+014|t|red|red|An empty room|Or is it?|50$|life+20
+017|t|red|green|An empty room|Or is it?|50$|life+20
+018|m|green|blue|Mirror Room|The room is filled with mirrors|skeleton|250$|key+1
+019|m|green|blue|Mirror Room|The room is filled with mirrors|skeleton|350$|shield+3
+021|r|none|none|Another tunnel|Getting deeper and deeper
+022|r|none|none|Another tunnel|Getting deeper and deeper
+023|r|none|none|Another tunnel|Getting deeper and deeper
+024|m|none|none|Dark room|You hear weird noise|sea_monkey|1000$|key+4,sword+3
+025|r|none|none|Another tunnel|Getting deeper and deeper
+026|r|none|none|Another tunnel|Getting deeper and deeper
+027|r|none|none|Another tunnel|Getting deeper and deeper
+028|m|none|none|Dark room|You hear weird noise|sea_monkey|150$|key+3,sword+2
+029|r|none|none|Another tunnel|Getting deeper and deeper
+030|r|none|none|Another tunnel|Getting deeper and deeper
+031|r|none|none|Another tunnel|Getting deeper and deeper
+032|r|none|none|Another tunnel|Getting deeper and deeper
+033|r|none|none|Another tunnel|Getting deeper and deeper
+034|r|none|none|Amazing trea...no its an empty room|The room was one of the amazing rooms in the world once.
+035|l|none|none|The End!|You found lassie!!!!!
+036|r|none|none|An empty room|Nothing here
+037|r|none|none|An empty room|Nothing here
+038|r|none|none|An empty room|Nothing here
+
+# AT LEAST ONE EMPTY LINES IS REQUIRED TO SEPARATE ROOM DESCRIPTIONS FROM MAP
+# '| |', '=' are connections between rooms
+# '*' means a closed door
+# '@' means a locked door
+#
+001         034     002 
+| |         | |     | | 
+003=004=005*007     008 
+| |     | |         |*| 
+009     010         011 
+|@|                 | | 
+012=013     014     015 
+    |*|     | |     | | 
+    016=017=018=019@020 
+    | |     | | 
+021=022     023=006*030 
+| |             | | 
+024             025 
+| |             | | 
+026=027     028=029@035 
+    | |     | | 
+    031=032=033 
+        |@| 
+    037*036=038 
+        
